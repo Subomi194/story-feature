@@ -1,14 +1,18 @@
-import Image from "./components/image";
+import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
+import StoryFeature from "./components/storyFeature";
+import ViewStories from "./components/viewStories";
 
 
 function App() {
   return (
-    <div className="App">
-      <h1>Welcome to My React App</h1>
-      <p>This is a simple React application.</p>
-      
-        <Image/>
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<StoryFeature/>}/>
+        <Route path="/view/:storyId" element={<ViewStories/>}/>
+      </Routes>
+    </Router>
+    
+   
   );
 }
 

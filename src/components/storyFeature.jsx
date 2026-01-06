@@ -2,11 +2,16 @@ import {useEffect, useState } from "react";
 import useLocalStorage from "../hooks/useLocalStorage";
 import base64Encode from "../base64";
 import { HiPlusSm } from "react-icons/hi";
+import { useNavigate } from "react-router-dom";
+import ViewStories from "./viewStories";
 
-function Image() {
 
+function StoryFeature() {
+   
     const [stories, setStories] = useLocalStorage("stories", []);
-    
+
+    const navigate = useNavigate();
+
     const handleImageChange = async (e) => {
         const file = e.target.files[0];
         if (!file) return;
@@ -17,7 +22,7 @@ function Image() {
             id: Date.now(),
             src: base64,
             createdAt:  Date.now(),
-            expiredAt: Date.now() + 60000,
+            expiredAt: Date.now() + 600000,
         }; 
         setStories((prev) => [...prev, newStory]);
     };
@@ -36,28 +41,35 @@ function Image() {
 
   return (
     <div className="">
-        <div className=" m-4 p-4 border-dashed border-2 border-gray-300 rounded-lg">
+        <div className=" m-4 p-4 border-dashed border-2 border-gray-300 rounded-lg flex gap-5">
             <input type="file" id="input" onChange={handleImageChange} 
             className="hidden"/>
 
             <label htmlFor="input" className="cursor-pointer rounded-full 
-            border-5 w-15 h-15 flex justify-center items-center">
+            border-5 w-20 h-20 flex justify-center items-center">
                 <HiPlusSm className="text-5xl " />
             </label>
+
+
+            <div className="flex justify-center items-center gap-5" >
+                {stories.map((story, ) => (
+                    <img
+                    onClick={() => {
+                        navigate(`/view/${story.id}`);
+                    }}
+                    key={story.id}
+                    src={story.src}
+                    alt="story"
+                    
+                    className="w-21 h-21 rounded-full border-2 border-dashed" />
+                ))}
+            </div>
            
         </div>
       
         
-        <div className="flex" >
-            {stories.map((story, ) => (
-                <img
-                key={story.id}
-                src={story.src}
-                alt="story"
-                className="w-20 h-20" />
-            ))}
-        </div>
+        
     </div>
   );
 }
-export default Image;
+export default StoryFeature;
