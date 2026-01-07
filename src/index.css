@@ -1,1 +1,16 @@
 @import "tailwindcss";
+
+@keyframes progress {
+    from {
+        width: 0%;
+        background-color: rgb(156, 163, 175) ;
+    }
+    to {
+        width: 100%;
+        background-color: rgb(59, 130, 246);
+    }
+}
+
+.animation-progress {
+    animation: progress 3s linear forwards;
+}

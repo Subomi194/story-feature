@@ -1,9 +1,8 @@
 import {useEffect, useState } from "react";
 import useLocalStorage from "../hooks/useLocalStorage";
-import base64Encode from "../base64";
+import ResizeImage from "../resizeImage";
 import { HiPlusSm } from "react-icons/hi";
 import { useNavigate } from "react-router-dom";
-import ViewStories from "./viewStories";
 
 
 function StoryFeature() {
@@ -16,11 +15,11 @@ function StoryFeature() {
         const file = e.target.files[0];
         if (!file) return;
 
-        const base64 = await base64Encode(file);
+        const resizedBase64 = await ResizeImage(file);
 
         const newStory = {
             id: Date.now(),
-            src: base64,
+            src: resizedBase64,
             createdAt:  Date.now(),
             expiredAt: Date.now() + 600000,
         }; 
@@ -55,7 +54,10 @@ function StoryFeature() {
                 {stories.map((story, ) => (
                     <img
                     onClick={() => {
-                        navigate(`/view/${story.id}`);
+                        navigate(`/view/${story.id}`
+
+                        )
+                        ;
                     }}
                     key={story.id}
                     src={story.src}
@@ -66,8 +68,6 @@ function StoryFeature() {
             </div>
            
         </div>
-      
-        
         
     </div>
   );
