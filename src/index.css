@@ -3,14 +3,16 @@
 @keyframes progress {
     from {
         width: 0%;
-        background-color: rgb(156, 163, 175) ;
+        background-color: #EBD6E8;
     }
     to {
         width: 100%;
-        background-color: rgb(59, 130, 246);
+        background-color: #C084FC;
     }
 }
 
 .animation-progress {
+    height: 100%;
+    border-radius: 9999px;
     animation: progress 3s linear forwards;
 }
