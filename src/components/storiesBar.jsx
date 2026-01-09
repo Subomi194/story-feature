@@ -20,7 +20,7 @@ function StoriesBar() {
             id: Date.now(),
             src: resizedBase64,
             createdAt:  Date.now(),
-            expiredAt: Date.now() + 600000,
+            expiredAt: Date.now() + 86400000, 
         }; 
         setStories((prev) => [...prev, newStory]);
     };
