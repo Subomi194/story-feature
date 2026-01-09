@@ -28,7 +28,7 @@ This project allows users to upload images from their device and view them as sh
 `npm run dev`
 
 ## Check it out
-[View the live demo](https://stories-feature-eight.vercel.app/)🤭
+[View the live demo](https://story-feature-o5hf2j8yg-subomiariyo-3534s-projects.vercel.app/)🤭
 
 > Note: This project uses client-side storage only. Stories are stored locally in the browser and are not shared across users or devices.
 
